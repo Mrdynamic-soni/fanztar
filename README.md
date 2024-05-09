@@ -33,6 +33,7 @@ Calculates the total price and lists the parts for the given list of mobile comp
   "components": ["A", "B", "C"]
 }
 ```
+#### Respnse
 
 ```
 {
