@@ -1,0 +1,27 @@
+# Dependency directories
+node_modules/
+npm-debug.log
+
+# Environment variables
+.env
+
+# Editor directories and files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.svelte-kit/
+
+# Compiled binary files
+*.o
+*.out
+*.exe
+
+# Ignore logs and databases
+logs/
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+Thumbs.db
