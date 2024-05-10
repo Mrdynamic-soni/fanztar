@@ -5,7 +5,9 @@ export const mobileDataListPrice = (codeList) => {
   const parts = [];
 
   for (const code of codeList) {
-    const part = mobileData.parts.find((part) => part.code === code);
+    const part = mobileData.parts.find(
+      (part) => part.code === code.toUpperCase()
+    );
     if (part) {
       price += part.price;
       parts.push(part.part);

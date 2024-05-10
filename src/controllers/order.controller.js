@@ -5,6 +5,11 @@ import { mobileDataListPrice } from "../services/order.services.js";
 export const getMobileDataPrice = async (req, res) => {
   try {
     const { components } = req.body;
+    if (components?.length === 0) {
+      return res
+        .status(200)
+        .json({ status: 200, msg: "Component List is empty" });
+    }
     if (!components || !Array.isArray(components)) {
       return res
         .status(400)
