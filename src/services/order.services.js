@@ -1,4 +1,3 @@
-import { uuid } from "uuidv4";
 import { mobileData } from "../utils/mobileData.js";
 
 export const mobileDataListPrice = (codeList) => {
@@ -14,7 +13,7 @@ export const mobileDataListPrice = (codeList) => {
   }
 
   return {
-    order_id: uuid(),
+    order_id: Math.floor(Math.random() * 100) + 1,
     price: price.toFixed(2),
     parts: parts,
   };
