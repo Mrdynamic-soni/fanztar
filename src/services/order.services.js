@@ -4,10 +4,13 @@ export const mobileDataListPrice = (codeList) => {
   let price = 0;
   const parts = [];
 
+  const partsMap = new Map();
+  mobileData.parts.forEach((part) =>
+    partsMap.set(part.code.toUpperCase(), part)
+  );
+
   for (const code of codeList) {
-    const part = mobileData.parts.find(
-      (part) => part.code === code.toUpperCase()
-    );
+    const part = partsMap.get(code.toUpperCase());
     if (part) {
       price += part.price;
       parts.push(part.part);
