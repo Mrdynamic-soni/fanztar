@@ -12,7 +12,7 @@ const isValidOrder = (partsArray) => {
 
   for (let partCode of partsArray) {
     for (let partType of requiredPartTypes) {
-      if (mobileData.parts[partType].some((part) => part.code === partCode)) {
+      if (mobileData[partType].some((part) => part.code === partCode)) {
         partTypeCounts[partType] = (partTypeCounts[partType] || 0) + 1;
         break;
       }
@@ -37,10 +37,8 @@ export const mobileDataListPrice = (partsArray) => {
   let selectedParts = [];
 
   for (let partCode of partsArray) {
-    for (let partType in mobileData.parts) {
-      const part = mobileData.parts[partType].find(
-        (part) => part.code === partCode
-      );
+    for (let partType in mobileData) {
+      const part = mobileData[partType].find((part) => part.code === partCode);
       if (part) {
         totalPrice += part.price;
         selectedParts.push(part?.part);
