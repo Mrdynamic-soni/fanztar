@@ -33,7 +33,6 @@ const isValidOrder = (partsArray) => {
   return true;
 };
 
-// Optimize the mobileDataListPrice function
 export const mobileDataListPrice = (partsArray) => {
   if (!isValidOrder(partsArray)) {
     return "Invalid order";
