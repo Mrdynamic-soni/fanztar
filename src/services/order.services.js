@@ -11,11 +11,16 @@ const isValidOrder = (partsArray) => {
   const partTypeCounts = {};
 
   for (let partCode of partsArray) {
+    let found = false;
     for (let partType of requiredPartTypes) {
-      if (mobileData[partType].some((part) => part.code === partCode)) {
+      if (mobileData[partType][partCode]) {
         partTypeCounts[partType] = (partTypeCounts[partType] || 0) + 1;
+        found = true;
         break;
       }
+    }
+    if (!found) {
+      return false;
     }
   }
 
@@ -28,6 +33,7 @@ const isValidOrder = (partsArray) => {
   return true;
 };
 
+// Optimize the mobileDataListPrice function
 export const mobileDataListPrice = (partsArray) => {
   if (!isValidOrder(partsArray)) {
     return "Invalid order";
@@ -38,10 +44,9 @@ export const mobileDataListPrice = (partsArray) => {
 
   for (let partCode of partsArray) {
     for (let partType in mobileData) {
-      const part = mobileData[partType].find((part) => part.code === partCode);
-      if (part) {
-        totalPrice += part.price;
-        selectedParts.push(part?.part);
+      if (mobileData[partType][partCode]) {
+        totalPrice += mobileData[partType][partCode].price;
+        selectedParts.push(mobileData[partType][partCode].part);
         break;
       }
     }
